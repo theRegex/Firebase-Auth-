@@ -30,18 +30,24 @@ input.ng-valid{
 	color:red;
 	margin-left:2%;
 }
+
+.t-response{
+    margin:0 auto;
+    color: #fff;
+}
 </style>
 </head>
 <body>
 	<div class="" ng-app="loginAu">
 <div class="container" id="auth" ng-controller="veri">
+
     <div class="col-md-4 col-md-offset-4">
         <div class="well">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><strong>Sign in </strong></h3></div>
+                    <h3 class="panel-title"><strong>Sign Up</strong></h3></div>
                 <div class="panel-body">
-                    <form name="t_form" ng-submit="signUp()" novalidate="">
+                    <form name="t_form" ng-submit="doSign()" novalidate="">
                         <div class="form-group">
                             <label for="em1-0">Email</label>
                             <input type="email" name="email" class="form-control" ng-model="authInfo.email" style="border-radius:0px" id="em1" placeholder="Enter email" required>
@@ -71,10 +77,50 @@ input.ng-valid{
             </div>
         </div>
     </div>
+    <div class="t-response">{{danger}}</div>
 </div>
 
 
-<div class="t-response"></div>
+<div class="container" id="auth" ng-controller="veri">
+<pre>{{profile.active_follers}}</pre>
+    <div class="col-md-4 col-md-offset-4">
+     
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Log In</strong></h3></div>
+                <div class="panel-body">
+                    <form name="t_form" ng-submit="login()" novalidate="">
+                        <div class="form-group">
+                            <label for="em1-0">Email</label>
+                            <input type="email" name="email" class="form-control" ng-model="loginInfo.email" style="border-radius:0px" id="em1" placeholder="Enter email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password <a>(forgot password)</a></label>
+                            <input type="password" name="password" class="form-control" ng-model="loginInfo.password" ng-minlength="6" ng-maxlength="8" style="border-radius:0px" id="ep2" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-default" ng-disabled="t_form.email.$invalid || t_form.password.$invalid ">Sign in</button>
+
+                        <span class="lg-msg" ng-show="form.email.$dirty
+ && t_form.email.$error.required">Valid credentials required.</span>
+                        <span class="lg-msg" ng-show="t_form.email.$error.email">Not a valid email.</span>
+                       
+        
+
+
+                        <span class="lg-msg" ng-show="t_form.password.$dirty
+ && t_form.password.$error.required">Please Enter passord</span>
+                        <span class="lg-msg" ng-show="t_form.password.$dirty
+ && t_form.password.$error.minlength">Password not long enough</span>
+                        <span class="lg-msg" ng-show="t_form.password.$dirty
+ && t_form.password.$error.maxlength">Not a valid passowrd.</span>
+                     
+                    </form>
+                </div>
+            </div>
+    
+    </div>
+    <div class="t-response">{{danger}}</div>
+</div>
 
 </div>
 
